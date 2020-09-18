@@ -3,6 +3,7 @@ import Navbar from './navbar'
 import ImageSlider from './imageslider'
 import Landingfeatures from './landingfeatures'
 import Specialities from '../Specialities/specialities'
+import Footer from '../Footer/Footer'
 export default function landing() {
     return (
         <div>
@@ -10,6 +11,7 @@ export default function landing() {
             <ImageSlider />
             <Landingfeatures/>
             <Specialities/>
+            <Footer />
         </div>
     )
 }
