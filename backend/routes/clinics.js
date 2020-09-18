@@ -3,6 +3,13 @@ const express = require('express');
 const router = express.Router();
 const {Clinic,validateClinic} = require('../models/clinic')
 
+
+router.get('/',async (req, res)=>{
+    const clinics = await Clinic.find().sort('name');
+    res.send(clinics)
+})
+
+
 router.post('/',async (req,res)=>{
    
     const {error} = validateClinic(req.body);

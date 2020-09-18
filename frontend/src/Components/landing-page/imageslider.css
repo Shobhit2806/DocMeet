@@ -1,0 +1,28 @@
+.imageslidermain{
+    position: relative;
+    background: linear-gradient(180deg, rgba(211, 229, 255, 0.63) 0%,
+     rgba(199, 218, 245, 0) 94.79%, rgba(0, 105, 255, 0.1575) 100%);
+
+    margin-top: 3%;
+}
+.slidertext{
+position: absolute;
+width: 23%;
+top: 29%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 40px;
+
+
+color: #000000;
+
+}
+
+
+.imageslider1{
+    width: 30%;
+    margin-top: 3%;
+    margin-left: 45%;
+}

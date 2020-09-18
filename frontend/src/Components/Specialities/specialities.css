@@ -1,0 +1,25 @@
+
+.sliderslick{
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
+
+.imgslick{
+    width:80%;
+    
+    
+}
+.slick-prev:before{
+    color: yellow;
+    font-size: 30px;
+    margin-left: -20px;
+      
+}
+.slick-next:before {
+  color: yellow;
+  font-size: 30px;
+  
+  
+
+}

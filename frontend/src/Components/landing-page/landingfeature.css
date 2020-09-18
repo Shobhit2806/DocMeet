@@ -1,0 +1,89 @@
+.discover{
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 40px;
+line-height: 60px;
+
+color: #000000;
+
+text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.featurebox{
+    
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    margin-bottom: 10%;
+    
+}
+
+.box1{
+    
+    box-shadow: 5px 5px 5px #dbd6d6;
+    transition: 1s;
+    width: 50%;
+    
+}
+.box1:hover{
+    transform: translate(-5px,-5px);
+    transition: 0.8s;
+    box-shadow: 10px 10px 10px #dbd6d6;
+}
+.box1:active{
+    transform: translate(3px,3px);
+    transition: 0.2s;
+    box-shadow: 2px 2px 2px #dbd6d6;
+}
+.box2{
+    box-shadow:  5px 5px 5px#dbd6d6;;
+    width: 50%;
+    
+}
+.box2:hover{
+    transform: translate(-5px,-5px);
+    transition: 0.8s;
+    box-shadow: 10px 10px 10px #dbd6d6;
+}
+.box2:active{
+    transform: translate(3px,3px);
+    transition: 0.2s;
+    box-shadow: 2px 2px 2px #dbd6d6;
+}
+.box3{
+    box-shadow:  5px 5px 5px #dbd6d6;;
+    width: 50%;
+    
+}
+.box3:hover{
+    transform: translate(-5px,-5px);
+    transition: 0.8s;
+    box-shadow: 10px 10px 10px #dbd6d6;
+}
+.box3:active{
+    transform: translate(3px,3px);
+    transition: 0.2s;
+    box-shadow: 2px 2px 2px #dbd6d6;
+}
+
+.findimg{
+    width: 50%;
+    
+}
+.findimg1{
+    width: 40%;
+    
+}
+.findtext{
+    
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+height: 150px;
+color: #FFB0B1;
+;
+
+
+}
