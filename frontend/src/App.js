@@ -7,6 +7,9 @@ import {
   Route
 } from "react-router-dom";
 import Doctors from './Components/Doctors/Doctors';
+import Signup from './Components/Authentication/Signup';
+import PatientDetails from './Components/BookingDetails/PatientDetails';
+import Appointment from './Components/BookingDetails/Appointment';
 
 
 function App() {
@@ -17,8 +20,11 @@ function App() {
         <Switch>
         <Route path='/' exact component={Landing} />
         <Route path='/doctors' component={Doctors} />
-          </Switch>
-          </Router>
+        <Route path='/signup' component={Signup} />
+        <Route path='/patientdetails' component={PatientDetails} />
+        <Route path='/scheduleappointment' component={Appointment} />
+        </Switch>
+        </Router>
       
     </div>
   );

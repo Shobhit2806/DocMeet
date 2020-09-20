@@ -1,0 +1,38 @@
+.page{
+    display: flex;
+    justify-content: center;
+}
+.img_pat{
+    width:30rem;
+    height: 30rem;
+    margin-left: 300px;
+}
+.inputfields{
+    position: relative;
+    background-color: white;
+    margin-top: 5%;
+    width:25%;
+    height: 25%;
+    box-shadow: 2px 2px 4px #CD6C7D
+}
+
+.username{
+    display: grid;
+    height: 70%;
+    width: 85%;
+    margin-top:15%;
+    margin-left: 6%;
+}
+.phonenumber{
+    display: grid;
+    height: 70%;
+    width: 85%;
+    margin-top:15%;
+    margin-left: 6%;
+    
+}
+.btnsub{
+    display: grid;
+    
+    margin-top:25%;   
+}

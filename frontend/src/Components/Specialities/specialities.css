@@ -2,22 +2,26 @@
 .sliderslick{
     padding-left: 50px;
     padding-right: 50px;
-    
+    background-color: #F5F9E9;   
 }
-
+.cardspeciality{
+    
+    background: linear-gradient(180deg, rgba(211, 229, 255, 0.63) 0%,
+    rgba(199, 218, 245, 0) 94.79%, rgba(0, 105, 255, 0.1575) 100%);
+}
 .imgslick{
     width:80%;
     
     
 }
 .slick-prev:before{
-    color: yellow;
+    color: #CD6C7D;
     font-size: 30px;
     margin-left: -20px;
       
 }
 .slick-next:before {
-  color: yellow;
+  color: #CD6C7D;
   font-size: 30px;
   
   

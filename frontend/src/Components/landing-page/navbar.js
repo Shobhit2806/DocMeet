@@ -2,14 +2,6 @@ import React from 'react'
 import logo from '../../assets/images/logo.png'
 import './navbar.css'
 
-// const toggleButton = document.getElementsByClassName('toggle-button')[0];
-// const navlinks = document.getElementsByClassName('navlinks')[0];
-
-// toggleButton.addEventListener('click',()=>{
-//     navlinks.classList.toggle('active')
-// })
-
-
 export default function navbar() {
     return (
         <div>
@@ -25,8 +17,8 @@ export default function navbar() {
                 </a>
                 <div className="navlinks">
                 <ul>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">SignUp</a></li>
+                    <li><a href="/doctors">Login</a></li>
+                    <li><a href="/signup">SignUp</a></li>
                 </ul>
                 </div>
             </nav>

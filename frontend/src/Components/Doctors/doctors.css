@@ -1,0 +1,12 @@
+.doctorslanding{
+    background-color: #F5F9E9;
+}
+.textbook{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 60px;
+    color: #CD6C7D;
+    text-shadow: 0px 2px 3px rgb(245, 206, 206);
+}

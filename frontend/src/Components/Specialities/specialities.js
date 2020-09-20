@@ -11,6 +11,7 @@ import orthopedist from '../../assets/images/orthopedist.jpg'
 import pediatrician from '../../assets/images/pediatrician.jpg'
 import physiotherapist from '../../assets/images/physiotherapist.jpg'
 import './specialities.css' 
+import {Link} from 'react-router-dom'
 class specialities extends Component {
     render() {
         var settings = {
@@ -20,8 +21,8 @@ class specialities extends Component {
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 1,
-            // autoplay: true,
-            // autoplaySpeed: 2000,
+            autoplay: true,
+            autoplaySpeed: 2000,
             pauseOnHover: true,
             responsive: [
                 {
@@ -58,33 +59,33 @@ class specialities extends Component {
         <Slider {...settings}>
         <div>
             {/* <img className="imgslick" src={findadoctor} alt="a"/> */}
-            <Card style={{ width: '18rem',backgroundColor:'pink' }}>
+            <Card className="cardspeciality" style={{ width: '18rem'}}>
   <Card.Img variant="top" src={dentist} width="100%" height="200px" />
   <Card.Body>
-    <Card.Title>Card Title</Card.Title>
+    <Card.Title>Dentist</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
   </Card.Body>
 </Card>
         </div>
         <div>
-        <Card style={{ width: '18rem',backgroundColor:'pink' }}>
+        <Card className="cardspeciality" style={{ width: '18rem'}}>
   <Card.Img variant="top" src={dietician} width="100%" height="200px" />
   <Card.Body>
-    <Card.Title>Card Title</Card.Title>
+    <Card.Title>Dietician</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
   </Card.Body>
 </Card>
         </div>
         <div>
-        <Card style={{ width: '18rem',backgroundColor:'pink' }}>
+        <Card className="cardspeciality" style={{ width: '18rem'}}>
   <Card.Img variant="top" src={generalphysician} width="100%" height="200px" />
   <Card.Body>
     <Card.Title>Card Title</Card.Title>
@@ -92,12 +93,12 @@ class specialities extends Component {
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
   </Card.Body>
 </Card>
         </div>
         <div>
-        <Card style={{ width: '18rem',backgroundColor:'pink' }}>
+        <Card className="cardspeciality" style={{ width: '18rem'}}>
   <Card.Img variant="top" src={generalsurgeon} width="100%" height="200px" />
   <Card.Body>
     <Card.Title>Card Title</Card.Title>
@@ -105,12 +106,12 @@ class specialities extends Component {
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
   </Card.Body>
 </Card>
         </div>
         <div>
-        <Card style={{ width: '18rem',backgroundColor:'pink' }}>
+        <Card className="cardspeciality" style={{ width: '18rem'}}>
   <Card.Img variant="top" src={orthopedist} width="100%" height="200px" />
   <Card.Body>
     <Card.Title>Card Title</Card.Title>
@@ -118,12 +119,12 @@ class specialities extends Component {
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
   </Card.Body>
 </Card>
         </div>
         <div>
-        <Card style={{ width: '18rem',backgroundColor:'pink' }}>
+        <Card className="cardspeciality" style={{ width: '18rem'}}>
   <Card.Img variant="top" src={pediatrician} width="100%" height="200px"/>
   <Card.Body>
     <Card.Title>Card Title</Card.Title>
@@ -131,13 +132,13 @@ class specialities extends Component {
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
   </Card.Body>
 </Card>
         </div>
        
         <div>
-        <Card style={{ width: '18rem',backgroundColor:'pink' }}>
+        <Card className="cardspeciality" style={{ width: '18rem'}}>
   <Card.Img variant="top" src={physiotherapist} width="100%" height="200px" />
   <Card.Body>
     <Card.Title>Card Title</Card.Title>
@@ -145,7 +146,7 @@ class specialities extends Component {
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
   </Card.Body>
 </Card>
         </div>
