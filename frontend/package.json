@@ -16,6 +16,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-slick": "^0.26.1",
+    "react-time-picker": "^4.0.1",
+    "reactstrap": "^8.6.0",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {

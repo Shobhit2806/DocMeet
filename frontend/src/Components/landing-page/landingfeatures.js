@@ -15,6 +15,7 @@ export default function landingfeatures() {
             <div className="box1">
            <img  className = "findimg" src = {findadoctor} alt="find" />
                 <h1 className="findtext">FIND A DOCTOR!</h1>
+                <img src="https://cb-thumbnails.s3.ap-south-1.amazonaws.com/underline_learn.svg"/>
                 
             </div>
             <div className="box2">

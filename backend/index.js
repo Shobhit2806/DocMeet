@@ -4,15 +4,17 @@ var cors = require('cors');
 const app = express()
 const clinics = require('./routes/clinics')
 
+
 mongoose.connect('mongodb://localhost/docbook')
     .then(()=>{
         console.log('Connected to MongoDB...')
     })
     .catch(err=>console.error('Could not connect to MongoDB.. ',err ))
 
-    app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use('/api/clinics',clinics);
+
 
 
 //PORT

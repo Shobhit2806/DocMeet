@@ -2,67 +2,79 @@ const mongoose = require('mongoose');
 const express = require('express')
 const Joi = require('joi');
 
-// const addressSchema = new mongoose.Schema({
-//     streetline1:{
-//         type: String,
-//         required:true,
-//     },
-//     city:{
-//         type: String,
-//         required:true,
-//     },
-//     state:{
-//         type: String,
-//         required:true,
-//     },
-//     country:{
-//         type: String,
-//         required:true,
-//     },
-//     zipcode:{
-//         type: String,
-//         required:true,
-//     }
-// })
+
 
 
 const clinicSchema = new mongoose.Schema({
-    name:{
+    Clinicname:{
         type: String,
         required:true,
         minlength:5,
         maxlength:50,
         trim:true
     },
-    phone:{
+    Doctorname:{
         type: String,
-        required:true
+        required:true,
+        minlength:5,
+        maxlength:50,
+        trim:true
     },
+    emailId:{
+        type: String,
+        required:true,
+        minlength:5,
+        maxlength:50,
+        trim:true
+    },
+    password:{
+        type: String,
+        required:true,
+        minlength:5,
+        maxlength:50,
+        trim:true
+    },
+    
     specializations:{
         type:String,
         required:true
     },
-            streetline1:{
-                type: String,
-                required:true,
-            },
-            city:{
-                type: String,
-                required:true,
-            },
-            state:{
-                type: String,
-                required:true,
-            },
-            country:{
-                type: String,
-                required:true,
-            },
-            zipcode:{
-                type: String,
-                required:true,
-            }
+    Helpline1:{
+        type: String,
+        required:true
+    },
+    Helpline2:{
+        type: String,
         
+    },
+    streetline1:{
+        type: String,
+        required:true,
+    },
+    streetline1:{
+        type: String,
+        
+    },
+    city:{
+        type: String,
+        required:true,
+    },
+    state:{
+        type: String,
+        required:true,
+    },
+    country:{
+        type: String,
+        required:true,
+    },
+    zipcode:{
+        type: String,
+        required:true,
+    },
+    date:{
+        type:date
+    }    
+
         
 
 })

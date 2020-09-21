@@ -10,6 +10,9 @@ import Doctors from './Components/Doctors/Doctors';
 import Signup from './Components/Authentication/Signup';
 import PatientDetails from './Components/BookingDetails/PatientDetails';
 import Appointment from './Components/BookingDetails/Appointment';
+import PatientDashboard from './Components/PatientDashboard/PatientDashboard';
+import DoctorDashboard from './Components/DoctorDashboard/DoctorDashboard';
+import step2 from './Components/Authentication/step2';
 
 
 function App() {
@@ -23,6 +26,9 @@ function App() {
         <Route path='/signup' component={Signup} />
         <Route path='/patientdetails' component={PatientDetails} />
         <Route path='/scheduleappointment' component={Appointment} />
+        <Route path='/patientdashboard' component={PatientDashboard} />
+        <Route path='/doctordashboard' component={DoctorDashboard} />
+        <Route path='/step2' component={step2} />
         </Switch>
         </Router>
       

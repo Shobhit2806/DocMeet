@@ -1,19 +1,49 @@
 import React, { Component } from 'react';
-import { Card,Button } from 'react-bootstrap';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import dentist from '../../assets/images/dentist.jpg'
-import dietician from '../../assets/images/dietician.jpg'
-import generalphysician from '../../assets/images/generalphysician.jpg'
-import generalsurgeon from '../../assets/images/generalsurgeon.jpg'
-import orthopedist from '../../assets/images/orthopedist.jpg'
-import pediatrician from '../../assets/images/pediatrician.jpg'
-import physiotherapist from '../../assets/images/physiotherapist.jpg'
+import SpecialityCard from './SpecialityCard'
 import './specialities.css' 
-import {Link} from 'react-router-dom'
+
 class specialities extends Component {
     render() {
+       const Specialist=[
+         {
+           img:"dentist.jpg",
+           type:"Dentist",
+           about:"Teething Trouble?Schedule a dental checkup"
+         },
+         {
+          img:"dietician.jpg",
+          type:"Dietician",
+          about:" Get guidance on eating right and weight management"
+        },
+        {
+          img:"generalphysician.jpg",
+          type:"General Physician",
+          about:"Find the right family doctor in your neighbourhood"
+        },
+        {
+          img:"generalsurgeon.jpg",
+          type:"General Surgeon",
+          about:"Need to get operated?Find the right surgeon"
+        },
+        {
+          img:"orthopedist.jpg",
+          type:"Orthopedist",
+          about:"For Bone and Joint issues,spinal injuries and more"
+        },
+        {
+          img:"pediatrician.jpg",
+          type:"Pediatrician",
+          about:"Child Specialist and doctors for infant"
+        },
+        {
+          img:"physiotherapist.jpg",
+          type:"Physiotherapist",
+          about:"Pulled a muscle?Get it trained by a trained physiotherapist"
+        }
+       ]
         var settings = {
             
             
@@ -57,99 +87,14 @@ class specialities extends Component {
                 <h1>Find experienced doctors across all specialties</h1>
         <div className="sliderslick">
         <Slider {...settings}>
-        <div>
-            {/* <img className="imgslick" src={findadoctor} alt="a"/> */}
-            <Card className="cardspeciality" style={{ width: '18rem'}}>
-  <Card.Img variant="top" src={dentist} width="100%" height="200px" />
-  <Card.Body>
-    <Card.Title>Dentist</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
-  </Card.Body>
-</Card>
-        </div>
-        <div>
-        <Card className="cardspeciality" style={{ width: '18rem'}}>
-  <Card.Img variant="top" src={dietician} width="100%" height="200px" />
-  <Card.Body>
-    <Card.Title>Dietician</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
-  </Card.Body>
-</Card>
-        </div>
-        <div>
-        <Card className="cardspeciality" style={{ width: '18rem'}}>
-  <Card.Img variant="top" src={generalphysician} width="100%" height="200px" />
-  <Card.Body>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
-  </Card.Body>
-</Card>
-        </div>
-        <div>
-        <Card className="cardspeciality" style={{ width: '18rem'}}>
-  <Card.Img variant="top" src={generalsurgeon} width="100%" height="200px" />
-  <Card.Body>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
-  </Card.Body>
-</Card>
-        </div>
-        <div>
-        <Card className="cardspeciality" style={{ width: '18rem'}}>
-  <Card.Img variant="top" src={orthopedist} width="100%" height="200px" />
-  <Card.Body>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
-  </Card.Body>
-</Card>
-        </div>
-        <div>
-        <Card className="cardspeciality" style={{ width: '18rem'}}>
-  <Card.Img variant="top" src={pediatrician} width="100%" height="200px"/>
-  <Card.Body>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
-  </Card.Body>
-</Card>
-        </div>
+
+        {Specialist.map(val => (
+              
+                <SpecialityCard img={val.img} type={val.type} about={val.about} />
+              
+            ))}
+
        
-        <div>
-        <Card className="cardspeciality" style={{ width: '18rem'}}>
-  <Card.Img variant="top" src={physiotherapist} width="100%" height="200px" />
-  <Card.Body>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Link to="/doctors"><Button style={{backgroundColor:'#CD6C7D',color:'#F5F9E9',border:'none'}}>Book Now</Button></Link>
-  </Card.Body>
-</Card>
-        </div>
 
         </Slider>
         </div>
