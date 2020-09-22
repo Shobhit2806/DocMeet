@@ -6,14 +6,14 @@ const Joi = require('joi');
 
 
 const clinicSchema = new mongoose.Schema({
-    Clinicname:{
+    clinicName:{
         type: String,
         required:true,
         minlength:5,
         maxlength:50,
         trim:true
     },
-    Doctorname:{
+    doctorName:{
         type: String,
         required:true,
         minlength:5,
@@ -39,19 +39,23 @@ const clinicSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    Helpline1:{
-        type: String,
+    helpline1:{
+        type: Number,
+        minlength:10,
+        maxlength:10,
         required:true
     },
-    Helpline2:{
-        type: String,
+    helpline2:{
+        type: Number,
+        minlength:10,
+        maxlength:10
         
     },
     streetline1:{
         type: String,
         required:true,
     },
-    streetline1:{
+    streetline2:{
         type: String,
         
     },
@@ -71,11 +75,19 @@ const clinicSchema = new mongoose.Schema({
         type: String,
         required:true,
     },
-    date:{
-        type:date
-    }    
-
-        
+    fees:{
+        type: Number,
+        required:true,
+    },
+    fromDay:{
+        type:String,
+        required:true
+    },
+    toDay:{
+        type:String,
+        required:true
+    }
+    
 
 })
 
@@ -85,15 +97,25 @@ const Clinic = mongoose.model('Clinic',clinicSchema);
 function validateClinic(clinic){
     const schema=Joi.object({
         
-        name:Joi.string().min(5).required(),
-        phone:Joi.string().min(10).required(),
+        
+        clinicName:Joi.string().min(5).required(),
+        doctorName:Joi.string().min(5).required(),
+        emailId:Joi.string().min(5).required(),
+        password:Joi.string().min(5).required(),
+        helpline1:Joi.number().min(10).required(),
+        helpline2:Joi.number().min(10),
+        streetline1:Joi.string().required(),
+        streetline2:Joi.string().required(),
         city:Joi.string().required(),
         specializations:Joi.string().required(),
-        streetline1:Joi.string().required(),
         city:Joi.string().required(),
         state:Joi.string().required(),
         country:Joi.string().required(),
-        zipcode:Joi.string().required()
+        zipcode:Joi.string().required(),
+        fees:Joi.number().required(),
+        fromDay:Joi.string().required(),
+        toDay:Joi.string().required()
+
     })
     return schema.validate(clinic);
 }
