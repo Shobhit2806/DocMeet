@@ -22,13 +22,14 @@ function App() {
 <Router>
         <Switch>
         <Route path='/' exact component={Landing} />
-        <Route path='/doctors' component={Doctors} />
+        
         <Route path='/signup' component={Signup} />
         <Route path='/patientdetails' component={PatientDetails} />
         <Route path='/scheduleappointment' component={Appointment} />
         <Route path='/patientdashboard' component={PatientDashboard} />
         <Route path='/doctordashboard' component={DoctorDashboard} />
         <Route path='/step2' component={step2} />
+        <Route path='/:speciality' component={Doctors} />
         </Switch>
         </Router>
       

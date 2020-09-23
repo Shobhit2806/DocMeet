@@ -13,8 +13,16 @@ router.get('/',async (req, res)=>{
 })
 
 
+router.get('/:specializations',async (req, res)=>{
+    const clinics = await Clinic.find({specializations:req.params.specializations}).sort('name');
+    res.send(clinics)
+})
+
+
+
 router.post('/',async (req,res)=>{
    
+    console.log(res);
     const {error} = validateClinic(req.body);
     console.log(error)
     //console.log(value)
