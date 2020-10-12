@@ -6,8 +6,8 @@ import {Link} from 'react-router-dom'
 
 
 
-function DoctorCard() {
-    
+function DoctorCard({doctor}) {
+    console.log(doctor);
     return (
         <div classNameName="doctorcard">
      
@@ -20,18 +20,18 @@ function DoctorCard() {
 
           <div className="col-md-3">
             <div className="card-body">
-              <h5 className="card-title">Clinic Name</h5>
-              <p className="card-text">Dr.Tony Start</p>
-              <p className="card-text"><small className="text-muted">Dermatolgist,Dentist</small></p>
+              <h5 className="card-title">{doctor.clinicName}</h5>
+    <p className="card-text">{doctor.doctorName}</p>
+              <p className="card-text"><small className="text-muted">{doctor.specializations}</small></p>
             </div>
           </div>
 
           <div className="col-md-3">
             <div className="card-body">
-              <h5 className="card-text"> Local Streel 1,Delhi</h5>
-              <p className="card-text">Fess:500</p>
-              <p className="card-text">Helpline Number:1234567892</p>
-              <p className="card-text">Mon-Sat <br/>10:00 AM-6:00 PM </p>
+              <h5 className="card-text"> {doctor.streetline1}</h5>
+              <p className="card-text">{doctor.fees}</p>
+              <p className="card-text">{doctor.helpline1}</p>
+              <p className="card-text">{doctor.fromDay}-{doctor.toDay} <br/>10:00 AM-6:00 PM </p>
               
               
              
@@ -42,7 +42,7 @@ function DoctorCard() {
           <div className="col-md-3">
             <div className="card-body">
                 <br/><br/><br/>
-           <Link to="/patientdetails"><Button variant="primary">Book An Appointment</Button></Link> 
+           <Link to="/scheduleappointment"><Button variant="primary">Book An Appointment</Button></Link> 
             {/* <p className="card-text">No Booking Fee</p> */}
             
             </div>

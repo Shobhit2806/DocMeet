@@ -7,7 +7,7 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-
+import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -16,7 +16,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-
+import PatientDetails from '../BookingDetails/PatientDetails'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,23 +35,56 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['Choose an available day for your appointment', 'Choose an available time for your appointment', 'Share your contact information with us and we will send you a reminder'];
 }
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return 'Choose an available day for your appointment';
-    case 1:
-      return 'Choose an available time for your appointment';
-    case 2:
-      return 'Share your contact information with us and we will send you a reminder';
-    default:
-      return 'Unknown step';
-  }
-}
+
 
 export default function Appointment() {
+
+  const [patientName, setpatientName] = React.useState(null);
+  const [contactnumber, setcontactnumber] = React.useState(null);
+  const [date, setdate] = React.useState(null);
+  const [time, settime] = React.useState(null);
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <input onChange={e => setdate(e.target.value)} type="date"/>;
+      case 1:
+        return <input onChange={e => settime(e.target.value)} type="time"/>;
+      case 2:
+        return  <div>
+        <div>Name:<input onChange={e => setpatientName(e.target.value)} type="text" name="patientName" id="examplepatientName" placeholder="Patient Name"/></div> 
+        
+        <div>PhoneNumber:<input type="text" onChange={e => setcontactnumber(e.target.value)} name="contactnumber" id="examplecontactnumber" placeholder="phone number"/></div>
+        
+        </div>;
+      default:
+        return 'Unknown step';
+    }
+  }
+
+  const handleSubmit = e =>{
+    console.log(patientName)
+    window.alert("Booking Confirmed")
+    e.preventDefault();
+    axios({
+        method: 'post',
+        url: 'api/appointmenttimes',
+        headers: {
+            'Content-Type': 'application/json'
+            }, 
+        data: {
+          patientName:patientName,
+          contactnumber:contactnumber,
+          date:date,
+          time:time
+        }
+      });
+}
+
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -75,6 +108,8 @@ export default function Appointment() {
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             <StepContent>
+            <Typography>{getStepContent(index)}</Typography>
+              
               {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
       
@@ -117,11 +152,13 @@ export default function Appointment() {
         ))}
       </Stepper>
       {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} className={classes.button}>
-            Reset
-          </Button>
+        
+        <Paper onClick = {handleSubmit} square elevation={0} className={classes.resetContainer}>
+          <Typography>All steps completed - you&apos;re finished,Confirm booking</Typography>
+            <Button onClick={handleReset} className={classes.button}>
+              Confirm
+            </Button> 
+            
         </Paper>
       )}
     </div>

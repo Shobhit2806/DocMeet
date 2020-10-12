@@ -29,7 +29,7 @@ export default class Doctors extends Component {
                 <div className="textbook">Book an appointment for an in-clinic consultation </div>
                 <br/>
                 {
-                    doctors.length?doctors.map(doctor => <DoctorCard/>):null
+                    doctors.length?doctors.map(doctor => <DoctorCard doctor={doctor}/>):null
                 }
                 
             </div>

@@ -17,7 +17,7 @@ export default function navbar() {
                 </a>
                 <div className="navlinks">
                 <ul>
-                    <li><a href="/doctors">Login</a></li>
+                    <li><a href="/login">Login</a></li>
                     <li><a href="/signup">SignUp</a></li>
                 </ul>
                 </div>

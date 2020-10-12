@@ -13,7 +13,7 @@ import Appointment from './Components/BookingDetails/Appointment';
 import PatientDashboard from './Components/PatientDashboard/PatientDashboard';
 import DoctorDashboard from './Components/DoctorDashboard/DoctorDashboard';
 import step2 from './Components/Authentication/step2';
-
+import Login from './Components/Authentication/Login'
 
 function App() {
   return (
@@ -22,9 +22,8 @@ function App() {
 <Router>
         <Switch>
         <Route path='/' exact component={Landing} />
-        
+        <Route path="/login" component={Login} />
         <Route path='/signup' component={Signup} />
-        <Route path='/patientdetails' component={PatientDetails} />
         <Route path='/scheduleappointment' component={Appointment} />
         <Route path='/patientdashboard' component={PatientDashboard} />
         <Route path='/doctordashboard' component={DoctorDashboard} />

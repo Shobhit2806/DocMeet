@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 
 const router = express.Router();
-const {Clinic,validateClinic} = require('../models/clinic')
+const {Clinic,validateClinic,validateClinicLogin} = require('../models/clinic')
 const app = express()
 
 
@@ -52,5 +52,29 @@ router.post('/',async (req,res)=>{
     res.send(clinic);
 })
 
+
+//Clinic Login
+router.post("/login",async (req,res)=>{
+    
+    // console.log(res);
+    const {error} = validateClinicLogin(req.body);
+    //console.log(error)
+    if(error) return res.status(400).send(error.details[0].message);
+
+    //Checking if the email exists
+    const user = await Clinic.findOne({emailId:req.body.emailId})
+    if(!user) return res.status(400).send('Email does not exist')
+    //console.log(user.password);
+    //If PASSWORD IS CORRECT
+    var validPassword = 0;
+    if(req.body.password===user.password)
+    {
+        validPassword=1;
+    }
+    if(validPassword === 0) return res.status(400).send('Invalid Password');
+    res.send('Logged in!')
+
+
+})
 
 module.exports=router

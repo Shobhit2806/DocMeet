@@ -73,7 +73,18 @@ export default function SignupForm() {
         </FormGroup>
         <FormGroup row>
             <Label for="examplespecializations">Specializations</Label>
-            <Input onChange={e => setspecializations(e.target.value)}  type="text" name="specializations" id="exampleSpecializations" placeholder="Specializations" />
+           
+            <Input onChange={e => setspecializations(e.target.value)}  type="select" name="specializations" id="exampleSpecializations" placeholder="Specializations">
+            <option></option>
+            <option>Dentist</option>
+          <option>Dietician</option>
+          <option>General Surgeon</option>
+          <option>General Physician</option>
+          <option>Orthopedist</option>
+          <option>Pediatrician</option>
+          <option>Physiotherapist</option>
+          
+            </Input>
         </FormGroup>        
         <FormGroup row>
             <Label for="exampleHelpline1">Helpline1</Label>
@@ -112,12 +123,32 @@ export default function SignupForm() {
             <Input onChange={e => setfees(e.target.value)}  type="text" name="fees" id="examplefees" placeholder="fees" />
         </FormGroup>        
         <FormGroup row>
-            <Label for="examplefromDay">From Day</Label>
-            <Input onChange={e => setfromDay(e.target.value)}  type="text" name="fromDay" id="examplefromDay" placeholder="fromDay" />
+            <Label for="examplefromDay">From</Label>
+            <Input onChange={e => setfromDay(e.target.value)}  type="select" name="fromDay" id="examplefromDay" placeholder="fromDay" >
+            <option></option>
+            <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+
+            </Input>
         </FormGroup>        
         <FormGroup row>
-            <Label for="exampletoDay">To Day</Label>
-            <Input onChange={e => settoDay(e.target.value)}  type="text" name="toDay" id="exampletoDay" placeholder="toDay" />
+            <Label for="exampletoDay">To</Label>
+            <Input onChange={e => settoDay(e.target.value)}  type="select" name="toDay" id="exampletoDay" placeholder="toDay" >
+            <option></option>
+            <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+
+                </Input>
         </FormGroup>        
 
         <input type="submit" value="Submit" />

@@ -7,6 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {Button} from 'reactstrap';
+import {Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
@@ -75,7 +76,7 @@ export default function ActionsInAccordionSummary() {
   </AccordionDetails>
 </Accordion>
 ))}
-    <Button color="primary">Submit</Button>
+  <Link to="/doctordashboard"> <Button color="primary">Submit</Button></Link> 
     </div>
   );
 }

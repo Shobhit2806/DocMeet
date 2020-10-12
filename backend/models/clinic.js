@@ -120,5 +120,15 @@ function validateClinic(clinic){
     return schema.validate(clinic);
 }
 
+function validateClinicLogin(cliniclogin){
+    const schema=Joi.object({
+        emailId:Joi.string().min(5).required(),
+        password:Joi.string().min(5).required(),
+    })
+    return schema.validate(cliniclogin);
+}
+
+
 exports.Clinic = Clinic;
 exports.validateClinic = validateClinic;
+exports.validateClinicLogin = validateClinicLogin;

@@ -3,6 +3,7 @@ const express = require('express');
 
 const app = express()
 const clinics = require('./routes/clinics')
+const appointmenttimes = require('./routes/appointmenttimes')
 
 
 
@@ -16,7 +17,7 @@ mongoose.connect('mongodb://localhost/docbook')
 
 app.use(express.json());
 app.use('/api/clinics',clinics);
-
+app.use('/api/appointmenttimes',appointmenttimes);
 
 
 //PORT
