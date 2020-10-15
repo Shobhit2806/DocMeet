@@ -1,13 +1,30 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Navbar from '../landing-page/navbar'
 import {Button } from 'react-bootstrap';
+import axios from 'axios';
 
-export default function DoctorDashboard() {
+export default function DoctorDashboard(props) {
+
+    const [data, setData] = useState({ details: [] });
+
+    useEffect(()=>{
+        async function fetchData() {
+            const emailId = props.match.params.emailId;
+            // You can await here
+            const response = await axios.get(`/api/clinics/details/${emailId}`);
+            //console.log(response.data[0]);
+            setData(response.data[0]);
+        }
+        fetchData();
+    },[])    
+    //console.log(props)
+    //console.log(props.match.params.emailId)
     return (
         <div>
+        {console.log(data)}
          <Navbar />
-
-<div classNameName="patientcard">
+        {data.emailId}
+<div className="patientcard">
 
 <div className="card mb-3" >
 <div className="row no-gutters">

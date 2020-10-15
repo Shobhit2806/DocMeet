@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../landing-page/navbar'
 import {Button } from 'react-bootstrap';
-
+import {Link} from 'react-router-dom'
 
 export default function PatientDashboard() {
     return (
@@ -40,7 +40,7 @@ export default function PatientDashboard() {
 
       </div>
 
-            <Button variant="primary">Reschedule Appointment</Button>
+           <Link to="/scheduleappointment"><Button variant="primary">Reschedule Appointment</Button></Link> 
             <br/><br/><br/>
             <Button variant="primary">Cancel Appointment</Button>
         </div>

@@ -1,12 +1,13 @@
 import React from 'react'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios'
-import {Link } from 'react-router-dom'
+import {Link, Redirect } from 'react-router-dom'
 
 export default function Login() {
     const [emailId, setemailId] = React.useState(null);
     const [password, setpassword] = React.useState(null);
-    
+    const [loggedIn,setloggedIn] = React.useState(null);
+
     const handleSubmit = e =>{
         e.preventDefault();
         axios({
@@ -19,8 +20,21 @@ export default function Login() {
               emailId:emailId,
               password:password,
              }
+          }).then(response=>{
+            console.log(response)
+            setloggedIn(true);
+            //return <Redirect to="/doctordashboard" />
+            // console.log("hi///////////")
+          })
+          .catch(error=>{
+              console.log(error)
           });
         }
+        if(loggedIn)
+        {
+          return <Redirect to = {`/doctordashboard/${emailId}`} /> 
+        }
+        
     return (
         <div>
             <h1>Login</h1>
@@ -33,7 +47,7 @@ export default function Login() {
             <Label for="examplePassword">Password</Label>
             <Input onChange={e => setpassword(e.target.value)} type="password" name="password" id="examplePassword" placeholder="Password" />
         </FormGroup>
-        <Link to="/doctordashboard"> <input type="submit" value="Submit" /> </Link>
+        <input type="submit" value="Submit" /> 
 
         </Form>
 

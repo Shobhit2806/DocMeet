@@ -12,11 +12,18 @@ router.get('/',async (req, res)=>{
     res.send(clinics)
 })
 
+router.get('/details/:emailId',async (req, res)=>{
+    const clinics = await Clinic.find({emailId:req.params.emailId});
+    res.send(clinics)
+})
+
 
 router.get('/:specializations',async (req, res)=>{
     const clinics = await Clinic.find({specializations:req.params.specializations}).sort('name');
     res.send(clinics)
 })
+
+
 
 
 
