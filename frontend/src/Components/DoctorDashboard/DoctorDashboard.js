@@ -2,28 +2,45 @@ import React,{useEffect,useState} from 'react'
 import Navbar from '../landing-page/navbar'
 import {Button } from 'react-bootstrap';
 import axios from 'axios';
-
+import BookingCard from '../DoctorDashboard/BookingCard'
 export default function DoctorDashboard(props) {
 
-    const [data, setData] = useState({ details: [] });
+    const [doctor, setDoctor] = useState({ doctor: [] });
+    const [infos, setInfos] = useState([]);
 
     useEffect(()=>{
-        async function fetchData() {
+            async function fetchData() {
+            //console.log(props)
             const emailId = props.match.params.emailId;
+            
             // You can await here
-            const response = await axios.get(`/api/clinics/details/${emailId}`);
-            //console.log(response.data[0]);
-            setData(response.data[0]);
-        }
-        fetchData();
-    },[])    
-    //console.log(props)
+            const response =await axios.get(`/api/clinics/details/${emailId}`)
+            setDoctor(response.data[0])
+            
+            //console.log("hi")
+            //console.log(response)
+            const appointments = await axios.get(`/api/appointmenttimes/${emailId}`);
+            //console.log(appointments.data.length)
+            //console.log(typeof(appointments))
+            setInfos(appointments.data);
+            }
+            fetchData();
+        },[])        
     //console.log(props.match.params.emailId)
     return (
         <div>
-        {console.log(data)}
+        {console.log(doctor)}
          <Navbar />
-        {data.emailId}
+        {doctor.emailId}
+        {console.log(typeof(infos))}
+        {console.log(infos)}
+
+         {
+            infos.map(info => <BookingCard info={info}/>)
+        } 
+            
+         
+        
 <div className="patientcard">
 
 <div className="card mb-3" >

@@ -2,8 +2,16 @@ import React from 'react'
 import Navbar from '../landing-page/navbar'
 import {Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
+import axios from 'axios';
+
 
 export default function PatientDashboard() {
+
+    const handleDelete = async (e) =>{
+      console.log(e);
+        //await axios.delete(`api/appointmenttimes/`)
+    }
+
     return (
         <div>
             <Navbar />
@@ -42,7 +50,7 @@ export default function PatientDashboard() {
 
            <Link to="/scheduleappointment"><Button variant="primary">Reschedule Appointment</Button></Link> 
             <br/><br/><br/>
-            <Button variant="primary">Cancel Appointment</Button>
+            <Button onClick={handleDelete} variant="primary">Cancel Appointment</Button>
         </div>
     )
 }

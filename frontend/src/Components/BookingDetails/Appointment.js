@@ -40,8 +40,8 @@ function getSteps() {
 
 
 
-export default function Appointment() {
-
+export default function Appointment(props) {
+  console.log(props);
   const [patientName, setpatientName] = React.useState(null);
   const [contactnumber, setcontactnumber] = React.useState(null);
   const [date, setdate] = React.useState(null);
@@ -76,6 +76,7 @@ export default function Appointment() {
             'Content-Type': 'application/json'
             }, 
         data: {
+          DoctorEmailId:props.location.state.emailId,
           patientName:patientName,
           contactnumber:contactnumber,
           date:date,

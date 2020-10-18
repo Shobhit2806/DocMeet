@@ -6,6 +6,10 @@ const Joi = require('joi');
 
 
 const appointmentSchema = new mongoose.Schema({
+    DoctorEmailId:{
+        type:String,
+        required:true
+    },
     date:{
         type: String,
         required:true,
@@ -41,7 +45,7 @@ const Appointment = mongoose.model('Appointment',appointmentSchema);
 function validateAppointment(appointment){
     const schema=Joi.object({
         
-        
+        DoctorEmailId:Joi.string().required(),
         patientName:Joi.string().min(5).required(),
         contactnumber:Joi.number().min(10).required(),
         date:Joi.string().required(),
