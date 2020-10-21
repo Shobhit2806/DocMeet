@@ -12,15 +12,24 @@ export default function DoctorDashboard(props) {
             async function fetchData() {
             //console.log(props)
             const emailId = props.match.params.emailId;
+            const token = localStorage.getItem('token')
+            const config = {
+                headers:{
+                    "Content-type":"application/json"
+                    
+                }
+            }
+            if(token){
+                config.headers['x-auth-token'] = token;
+            }
             
             // You can await here
             const response =await axios.get(`/api/clinics/details/${emailId}`)
             setDoctor(response.data[0])
             
-            //console.log("hi")
-            //console.log(response)
-            const appointments = await axios.get(`/api/appointmenttimes/${emailId}`);
-            //console.log(appointments.data.length)
+           
+            const appointments = await axios.get(`/api/appointmenttimes/${emailId}`,config);
+            console.log(appointments)
             //console.log(typeof(appointments))
             setInfos(appointments.data);
             }
@@ -35,7 +44,7 @@ export default function DoctorDashboard(props) {
         {console.log(typeof(infos))}
         {console.log(infos)}
 
-         {
+        {
             infos.map(info => <BookingCard info={info}/>)
         } 
             

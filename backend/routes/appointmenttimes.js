@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
-
+const auth = require('../middleware/auth')
 const router = express.Router();
 const {Appointment,validateAppointment} = require('../models/appointmenttime')
 const app = express()
@@ -8,19 +8,36 @@ const app = express()
 
 
 router.get('/',async (req, res)=>{
+
+
+
     const appointments = await Appointment.find().sort('patientName');
     res.send(appointments)
 })
 
-router.get('/:DoctorEmailId',async (req, res)=>{
+//Doctor Dashboard
+
+router.get('/:DoctorEmailId',auth,async (req, res)=>{
+
+    //console.log(req);
+   
+
     const appointments = await Appointment.find({DoctorEmailId:req.params.DoctorEmailId});
     res.send(appointments)
 })
 
+//Patient Dashboard
+
+// router.get('/:patientId',async (req, res)=>{
+//     const appointments = await Appointment.find({patientId:req.params.patientId});
+//     res.send(appointments)
+// })
+
+
 
 router.post('/',async (req,res)=>{
    
-    console.log(res);
+    
     const {error} = validateAppointment(req.body);
     console.log(error)
     //console.log(value)

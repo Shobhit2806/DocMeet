@@ -25,7 +25,7 @@ export default class Navbar extends Component {
             <nav className="navbar">
                 
                 <div className="brand-logo">
-                <img className="logoimg" src={logo} alt = "logo" />
+                <a href="http://localhost:3001"><img className="logoimg" src={logo} alt = "logo" /></a>
                 </div>
                 <a href="#" className="toggle-button">
                     <span className="bar"></span>

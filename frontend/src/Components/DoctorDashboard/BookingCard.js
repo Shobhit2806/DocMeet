@@ -3,11 +3,19 @@ import dietician from '../../assets/images/dietician.jpg'
 
 import {Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
-
+import axios from 'axios';
 
 
 function BookingCard({info}) {
     console.log(info);
+
+    const handleDone= async booking =>{
+      const Id = info._id;
+      await axios.delete(`/api/appointmenttimes/${Id}`)
+    }
+
+
+
     return (
         <div classNameName="infocard">
      
@@ -26,6 +34,7 @@ function BookingCard({info}) {
             </div>
           </div>
 
+          
           {/* <div className="col-md-3">
             <div className="card-body">
               <h5 className="card-text"> {info.streetline1}</h5>
@@ -39,20 +48,15 @@ function BookingCard({info}) {
             
           </div> */}
 
-          {/* <div className="col-md-3">
+          <div className="col-md-3">
             <div className="card-body">
                 <br/><br/><br/>
-           <Link to={{
-             pathname:'/scheduleappointment',
-             state:{
-              emailId:info.emailId
-             }
-           }}><Button variant="primary">Book An Appointment</Button></Link> 
+          <Button onClick={handleDone} variant="primary">Done</Button>
             
             
             </div>
             
-          </div> */}
+          </div>
 
           
 

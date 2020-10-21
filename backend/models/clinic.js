@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const express = require('express')
+const express = require('express');
 const Joi = require('joi');
-
+const jwt=require('jsonwebtoken');
+const config = require('config');
 
 
 
@@ -25,13 +26,14 @@ const clinicSchema = new mongoose.Schema({
         required:true,
         minlength:5,
         maxlength:50,
-        trim:true
+        trim:true,
+        unique:true
     },
     password:{
         type: String,
         required:true,
         minlength:5,
-        maxlength:50,
+        maxlength:255,
         trim:true
     },
     
@@ -90,6 +92,11 @@ const clinicSchema = new mongoose.Schema({
     
 
 })
+
+clinicSchema.methods.generateAuthToken = function() {
+    const token = jwt.sign({_id:this._id},config.get('jwtPrivateKey'))
+    return token;
+}
 
 const Clinic = mongoose.model('Clinic',clinicSchema);
 

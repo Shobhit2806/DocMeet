@@ -22,6 +22,8 @@ export default function Login() {
              }
           }).then(response=>{
             console.log(response)
+            localStorage.setItem('token',response.data.token);
+        
             setloggedIn(true);
             //return <Redirect to="/doctordashboard" />
             // console.log("hi///////////")

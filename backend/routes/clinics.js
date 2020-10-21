@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const express = require('express');
-
+const bcrypt = require('bcrypt');
 const router = express.Router();
+const config = require('config');
 const {Clinic,validateClinic,validateClinicLogin} = require('../models/clinic')
 const app = express()
-
+const jwt=require('jsonwebtoken')
 
 
 router.get('/',async (req, res)=>{
@@ -36,7 +37,11 @@ router.post('/',async (req,res)=>{
     
     if(error) return res.status(400).send(error.details[0].message);
 
-    let clinic = new Clinic({ 
+    let clinic = await Clinic.findOne({emailId:req.body.emailId});
+    if(clinic) return res.status(400).send('User already registered.')
+
+
+    clinic = new Clinic({ 
         clinicName:req.body.clinicName,
         doctorName:req.body.doctorName,
         emailId:req.body.emailId,
@@ -55,8 +60,14 @@ router.post('/',async (req,res)=>{
         toDay:req.body.toDay
 
     });
+
+    const salt = await bcrypt.genSalt(10);
+    clinic.password = await bcrypt.hash(clinic.password,salt)
     clinic = await clinic.save();
-    res.send(clinic);
+    
+    const token = clinic.generateAuthToken();
+    //const token = jwt.sign({_id:clinic._id},config.get('jwtPrivateKey'));
+    res.header('x-auth-token',token).send(clinic);
 })
 
 
@@ -70,16 +81,19 @@ router.post("/login",async (req,res)=>{
 
     //Checking if the email exists
     const user = await Clinic.findOne({emailId:req.body.emailId})
-    if(!user) return res.status(400).send('Email does not exist')
+    if(!user) return res.status(400).send('Email or Password is Incorrect')
     //console.log(user.password);
     //If PASSWORD IS CORRECT
-    var validPassword = 0;
-    if(req.body.password===user.password)
-    {
-        validPassword=1;
-    }
-    if(validPassword === 0) return res.status(400).send('Invalid Password');
-    res.send('Logged in!')
+
+    const validPassword = await bcrypt.compare(req.body.password,user.password);
+    if(!validPassword) return res.status(400).send('Email or Password is Incorrect')
+
+    const token = user.generateAuthToken();
+    //const token = jwt.sign({_id:user._id},config.get('jwtPrivateKey'));
+    res.header('x-auth-token',token).send({token,user});
+//    res.send(token);
+    
+    
 
 
 })

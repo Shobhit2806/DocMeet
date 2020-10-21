@@ -10,9 +10,14 @@ const passportSetup = require('./config/passport-setup')
 const cookieSession = require('cookie-session')
 const keys = require('./config/keys')
 const passport = require('passport')
+const config = require('config')
 
 
 
+if(!config.get('jwtPrivateKey')){
+    console.error('FATAL ERROR : jwtPrivateKey is not defined')
+    process.exit(1);
+}
 
 mongoose.connect('mongodb://localhost/docbook')
     .then(()=>{
