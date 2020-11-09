@@ -15,6 +15,7 @@ import DoctorDashboard from './Components/DoctorDashboard/DoctorDashboard';
 import step2 from './Components/Authentication/step2';
 import Login from './Components/Authentication/Login'
 import patientLogin from './Components/Patientauth/patientLogin';
+import Logout from './Components/Authentication/Logout';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/patientdashboard' component={PatientDashboard} />
         <Route path='/doctordashboard/:emailId' component={DoctorDashboard} />
         <Route path='/step2' component={step2} />
+        <Route path='/logout' component={Logout} />
         <Route path='/:speciality' component={Doctors} />
         </Switch>
         </Router>

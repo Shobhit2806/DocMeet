@@ -37,6 +37,7 @@ export default class Navbar extends Component {
                     <li><a href ="http://localhost:3000/auth/google">Login with google</a></li>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/signup">SignUp</a></li>
+                    <li><a href="/logout">Logout</a></li>
                 </ul>
                 </div>
             </nav>
