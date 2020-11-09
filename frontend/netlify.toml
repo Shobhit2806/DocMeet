@@ -1,4 +1,10 @@
 [[redirects]]
   from = "/*"
-  to = "frontend/index.html"
+  to = "index.html"
   status = 200
+
+
+  [build]
+  command = "npm run build"
+  publish="DocMeet/frontend/build"
+  base = "DocMeet/frontend"
