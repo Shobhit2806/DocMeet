@@ -4,7 +4,8 @@ class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                <h1>DocMeet</h1>
+                
+                <h5>Made with ❤  in India</h5>
                 
             </div>
         );

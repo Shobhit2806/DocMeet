@@ -1,0 +1,19 @@
+.formSignupPar{
+
+}
+.imgsignup{
+    position: fixed;
+    top: 25%;
+    left:10%;
+    width: 30%;
+}
+.textsignuphead{
+    font-family: 'Lobster', cursive;
+}
+
+@media only screen and (max-width: 1080px) {
+    .imgsignup{
+        display: none;
+    }
+        
+  }
