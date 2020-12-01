@@ -1,0 +1,53 @@
+.main{
+    background-color: #F5F9E9;   
+    
+}
+
+.head{
+    position: absolute;
+    left:60px;
+    top: 110px;
+    color: green;
+
+}
+.doctorname{
+    position: absolute;
+    left: 60px;
+    top: 120px;
+    font-weight: 100;
+    font-size: 20px;
+
+}
+
+.clinicname{
+    font-family: 'Mukta', sans-serif;
+    color: palevioletred;
+    text-shadow: purple;
+    font-size: 50px;
+}
+.stopbtn{
+    background-color: red;
+    border-color: red;
+    font-weight: bolder;
+    position: absolute;
+    top: 110px;
+    right: 15px;
+}
+
+.date{
+    
+
+}
+.discuss{
+    background-color: rgb(190, 190, 190);
+    border: none;
+    color: black;
+    margin-left: 15px;
+}
+.reject{
+    background-color: rgb(238, 184, 184);
+    border:none;
+    color: rgb(255, 0, 0);
+    margin-left: 15px;
+    
+}
