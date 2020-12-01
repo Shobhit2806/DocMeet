@@ -22,7 +22,7 @@ router.get('/:DoctorEmailId',auth,async (req, res)=>{
     //console.log(req);
    
 
-    const appointments = await Appointment.find({DoctorEmailId:req.params.DoctorEmailId});
+    const appointments = await Appointment.find({DoctorEmailId:req.params.DoctorEmailId}).sort({date:1,time:1});
     res.send(appointments)
 })
 

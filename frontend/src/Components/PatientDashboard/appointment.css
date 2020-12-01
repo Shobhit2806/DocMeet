@@ -1,0 +1,12 @@
+.reschedule{
+    position: absolute;
+    left: 32%;
+    top: 80%;
+    width: 33%;
+}
+.cancel{
+    position: absolute;
+    width: 32%;
+    left: 65%;
+    top: 80%;
+}
