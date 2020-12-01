@@ -6,7 +6,7 @@ const Speciality = ({ img, type, about }) => {
   console.log(`../../images/speciality_pic/${img}`);
   return (
     <div>
-    <Card className="cardspeciality" style={{ width: '18rem'}}> 
+    <Card className="cardspeciality" style={{ width: '80%',height:'auto'}}> 
     <Card.Img variant="top" src={require(`../../assets/images/${img}`)} width="100%" height="200px" />
     <Card.Body>
         <Card.Title>{type}</Card.Title>

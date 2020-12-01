@@ -2,7 +2,7 @@ import React from 'react'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import {Link } from 'react-router-dom'
 import axios from 'axios'
-
+import './signup.css'
 export default function SignupForm() {
     const [clinicname, setclinicName] = React.useState(null);
     const [doctorName, setdoctorName] = React.useState(null);
@@ -53,8 +53,8 @@ export default function SignupForm() {
     }
 
     return (
-        <div>
-            <Form onSubmit={handleSubmit}>
+        <div className="formSignupPar">
+            <Form className="formSignup" onSubmit={handleSubmit}>
         <FormGroup row>
             <Label for="exampleClinicName">ClinicName</Label>
             <Input  onChange={e => setclinicName(e.target.value)} type="text" name="clinicName" id="exampleclinicName" placeholder="Clinic Name" />

@@ -19,7 +19,9 @@ import Box from '@material-ui/core/Box';
 import calendar from '../../assets/images/calendar.svg'
 import chat from '../../assets/images/chat.svg'
 import report from '../../assets/images/medical-history.svg'
+
 import './patdash.css'
+import AppointmentsDone from './AppointmentsDone';
 
 function TabPanel(props) {
   
@@ -54,7 +56,7 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#F3F7FA',
     width: 500,
     position:'absolute',
     right:15,
@@ -77,25 +79,49 @@ const useStyles = makeStyles((theme) => ({
 
 const results =[
   {
-      "name":"dr. rc bansal",
+      "name":"Dr. R.C Bansal",
       "time":"9:30",
-      "phone":"564789",
+      "phone":"8497456121",
       "past":1
   },
   {
-      "name":"dr.Praveen bansal",
+      "name":"Dr.Praveen Bansal",
       "time":"10:30",
-      "phone":"5647894547",
+      "phone":"8497456121",
       "past":0
   },
   {
-      "name":"dr. rc bansal",
+      "name":"Dr. R.C Bansal",
       "time":"9:30",
-      "phone":"564789",
+      "phone":"8497456121",
       "past":1
   },
   
 ]
+
+const results2 =[
+  {
+      "name":"Dr. Bansal",
+      "time":"9:30",
+      "phone":"8497456121",
+      "past":1
+  },
+  {
+      "name":"Dr.MB Bansal",
+      "time":"10:30",
+      "phone":"8497456121",
+      "past":0
+  },
+  {
+      "name":"Dr. Garg",
+      "time":"9:30",
+      "phone":"8497456121",
+      "past":1
+  },
+  
+]
+
+
 export default function PatientDashboard() {
   const classes = useStyles();
   const theme = useTheme();
@@ -148,10 +174,17 @@ export default function PatientDashboard() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0} dir={theme.direction} />
-        <TabPanel value={value} index={1} dir={theme.direction} />
+        <TabPanel value={value} index={0} dir={theme.direction} >
+ {results.map(result => (<Appointments result={result} />))} 
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction} >
+        {results2.map(result => (<AppointmentsDone result={result} />))} 
+          </TabPanel>
       </SwipeableViews>
-          {results.map(result => (<Appointments result={result} />))} 
+      
+          
+           
+         
       </div>
             {/* <div className="appointments">
             <h3 className="textup">Upcoming Appointment</h3>

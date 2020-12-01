@@ -2,56 +2,49 @@ import React from 'react'
 import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios'
 import {Link, Redirect } from 'react-router-dom'
+import LoginForm from './LoginForm';
+import loginimg from '../../assets/images/login1.gif'
 
 export default function Login() {
-    const [emailId, setemailId] = React.useState(null);
-    const [password, setpassword] = React.useState(null);
-    const [loggedIn,setloggedIn] = React.useState(null);
-
-    const handleSubmit = e =>{
-        e.preventDefault();
-        axios({
-            method: 'post',
-            url: 'api/clinics/login',
-            headers: {
-                'Content-Type': 'application/json'
-                }, 
-            data: {
-              emailId:emailId,
-              password:password,
-             }
-          }).then(response=>{
-            console.log(response)
-            localStorage.setItem('token',response.data.token);
-        
-            setloggedIn(true);
-            //return <Redirect to="/doctordashboard" />
-            // console.log("hi///////////")
-          })
-          .catch(error=>{
-              console.log(error)
-          });
-        }
-        if(loggedIn)
-        {
-          return <Redirect to = {`/doctordashboard/${emailId}`} /> 
-        }
+  
         
     return (
         <div>
-            <h1>Login</h1>
-            <Form onSubmit={handleSubmit}>
-            <FormGroup row>
-            <Label for="exampleEmail">Email</Label>
-            <Input onChange={e => setemailId(e.target.value)} type="email" name="emailId" id="exampleemailId" placeholder="Email" />
-        </FormGroup>
-        <FormGroup row>
-            <Label for="examplePassword">Password</Label>
-            <Input onChange={e => setpassword(e.target.value)} type="password" name="password" id="examplePassword" placeholder="Password" />
-        </FormGroup>
-        <input type="submit" value="Submit" /> 
-
-        </Form>
+            <section id="about" className="about">
+            <div className="container">
+          
+              <div className="row no-gutters">
+                <div className="col-lg-6 video-box">
+          
+                
+                  
+                <img src={loginimg}  className="img-fluid" alt="login image" />
+                  
+                  
+                </div>
+          
+                <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
+          
+                  <div className="section-title">
+                    <h2 className="sectiontext">Login Here</h2>
+                    <p></p>
+                  </div>
+                  <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
+                    
+                  <LoginForm/>
+                  </div>
+          
+            
+          
+                  
+          
+          
+                
+          
+            </div>
+            </div>
+            </div>
+          </section>
 
         </div>
     )

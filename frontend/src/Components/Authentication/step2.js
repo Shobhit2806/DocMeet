@@ -8,10 +8,14 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {Button} from 'reactstrap';
 import {Link } from 'react-router-dom'
-
+import Navbar from '../landing-page/navbar'
+import image1 from '../../assets/images/img1.svg'
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: '50%',
+    position:"absolute",
+    left:"45%",
+    top:"20%"
   },
 });
 
@@ -40,8 +44,12 @@ export default function ActionsInAccordionSummary() {
   const classes = useStyles();
 
   return (
+    <div>
+      <Navbar />
+      <img src={image1} className="imgsignup" alt="image" />
+
     <div className={classes.root}>
-     
+     <h3>Select Clinic's Opening Hours...</h3>
 {days.map(val => (
   <Accordion>
   <AccordionSummary
@@ -77,6 +85,7 @@ export default function ActionsInAccordionSummary() {
 </Accordion>
 ))}
   <Link to="/doctordashboard"> <Button color="primary">Submit</Button></Link> 
+    </div>
     </div>
   );
 }

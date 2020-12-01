@@ -10,7 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import './dashboard.modules.css'
+import './dashboarddr.css'
 
 
 
@@ -93,7 +93,7 @@ export default function DoctorDashboard(props) {
         <div className="clinicname">{doctor.clinicName} Clinic</div>
 
         <br/>
-        <Button className="stopbtn">Stop Bookings</Button>
+        <Button className="stop-btn">Stop Bookings</Button>
         {console.log(typeof(infos))}
         {console.log(infos)}
         <TableContainer component={Paper} >
