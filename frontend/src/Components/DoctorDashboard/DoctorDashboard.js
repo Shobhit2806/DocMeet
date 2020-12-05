@@ -51,6 +51,8 @@ export default function DoctorDashboard(props) {
     const classes = useStyles();
     const [doctor, setDoctor] = useState({ doctor: [] });
     const [infos, setInfos] = useState([]);
+    const [availability,setavailability] = useState('false');
+    const [availability1,setavailability1] = useState('true');
    
     useEffect(()=>{
             async function fetchData() {
@@ -80,7 +82,34 @@ export default function DoctorDashboard(props) {
             fetchData();
         },[])        
  
-  
+        const handleAvailability = async() =>{
+          const emailId = props.match.params.emailId;
+            await axios({
+              method:'put',
+              url:`/api/clinics/details/${emailId}`,
+              headers:{
+              "Content-type":"application/json"
+              },
+              data: {
+                availability:availability
+              }
+          }
+          )
+        }
+        const handleAvailability1 = async() =>{
+          const emailId = props.match.params.emailId;
+          await axios({
+            method:'put',
+            url:`/api/clinics/details/${emailId}`,
+            headers:{
+            "Content-type":"application/json"
+            },
+            data: {
+              availability:availability1
+            }
+        }
+        )
+      }
     return (
         <div className="main">
         {/* Done(Action btn) */}
@@ -93,7 +122,10 @@ export default function DoctorDashboard(props) {
         <div className="clinicname">{doctor.clinicName} Clinic</div>
 
         <br/>
-        <Button className="stop-btn">Stop Bookings</Button>
+        {
+          doctor.availability=='false'?<Button onClick={handleAvailability1} className="stop-btn">Start Bookings</Button>:<Button onClick={handleAvailability} className="stop-btn">Stop Bookings</Button>
+        }
+        
         {console.log(typeof(infos))}
         {console.log(infos)}
         <TableContainer component={Paper} >
@@ -126,9 +158,9 @@ export default function DoctorDashboard(props) {
               <Button onClick={async ()=>{
                 await axios.delete(`/api/appointmenttimes/${info._id}`)
               }} variant="primary">Done</Button>
-              <Button onClick={async ()=>{
+              {/* <Button onClick={async ()=>{
                 await axios.delete(`/api/appointmenttimes/${info._id}`)
-              }} className="reject" variant="primary">Reject</Button>
+              }} className="reject" variant="primary">Reject</Button> */}
                <Button className="discuss" variant="primary">Discuss</Button>
               </StyledTableCell>
               

@@ -34,7 +34,7 @@ const appointmentSchema = new mongoose.Schema({
         minlength:10,
         maxlength:10,
         required:true
-    },
+    }
    
 
 })
