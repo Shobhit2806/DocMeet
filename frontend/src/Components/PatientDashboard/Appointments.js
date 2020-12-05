@@ -63,7 +63,7 @@ export default function Appointments({result}) {
             <Typography  component="h1">
               Current Booking Number:
             </Typography>
-            <Link to="/scheduleappointment"><Button className="reschedule" variant="primary">Reschedule</Button></Link> 
+            <Button className="reschedule" variant="primary">Reschedule</Button>
             <Button className="cancel" onClick={handleDelete} variant="primary">Cancel</Button>
           </Paper>
         </TimelineContent>

@@ -88,6 +88,10 @@ const clinicSchema = new mongoose.Schema({
     toDay:{
         type:String,
         required:true
+    },
+    availability:{
+        type:String,
+        default:true
     }
     
 
@@ -121,7 +125,8 @@ function validateClinic(clinic){
         zipcode:Joi.string().required(),
         fees:Joi.number().required(),
         fromDay:Joi.string().required(),
-        toDay:Joi.string().required()
+        toDay:Joi.string().required(),
+        availability:Joi.boolean()
 
     })
     return schema.validate(clinic);

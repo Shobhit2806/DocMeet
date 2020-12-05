@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import dietician from '../../assets/images/dietician.jpg'
 import './doctorcard.css'
 import {Button } from 'react-bootstrap';
@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 
 
 function DoctorCard({doctor}) {
+  
     console.log(doctor);
     return (
         <div classNameName="doctorcard">
@@ -42,13 +43,16 @@ function DoctorCard({doctor}) {
           <div className="col-md-3">
             <div className="card-body">
                 <br/><br/><br/>
+            {doctor.availability=='true'?
            <Link to={{
              pathname:'/scheduleappointment',
              state:{
               emailId:doctor.emailId
              }
-           }}><Button variant="primary">Book An Appointment</Button></Link> 
-            {/* <p className="card-text">No Booking Fee</p> */}
+           }}><Button variant="primary">Book An Appointment</Button></Link>
+           :<div className="over-blur" >Not available</div>
+             }
+            
             
             </div>
             
