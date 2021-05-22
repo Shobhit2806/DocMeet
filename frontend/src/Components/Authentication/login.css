@@ -1,0 +1,31 @@
+.loginWrapper {
+  margin-left: 50px;
+  border: 2px solid rgb(224, 217, 217);
+}
+.loginForm {
+  padding: 35px;
+  margin-left: 25px;
+  margin-bottom: 10%;
+}
+
+.sectionText {
+  margin-top: 20%;
+  margin-bottom: 10%;
+  margin-left: 5px;
+}
+.loginBtn {
+  width: 100%;
+  margin-left: -30px;
+  margin-top: 15px;
+}
+.GoogleloginBtn {
+  width: 100%;
+  margin-left: -30px;
+  margin-top: 15px;
+}
+.passwordField {
+  width: 100%;
+}
+.emailField {
+  width: 100%;
+}

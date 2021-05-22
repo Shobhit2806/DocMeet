@@ -3,7 +3,7 @@ import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap"
 import axios from "axios"
 import { Link, Redirect } from "react-router-dom"
 import "./login.css"
-export default function LoginForm() {
+export default function CustomerLoginForm() {
   const [emailId, setemailId] = React.useState(null)
   const [password, setpassword] = React.useState(null)
   const [loggedIn, setloggedIn] = React.useState(null)
@@ -12,7 +12,7 @@ export default function LoginForm() {
     e.preventDefault()
     axios({
       method: "post",
-      url: "api/clinics/login",
+      url: "api/patients/login",
       headers: {
         "Content-Type": "application/json",
       },
@@ -26,15 +26,23 @@ export default function LoginForm() {
         localStorage.setItem("token", response.data.token)
 
         setloggedIn(true)
-        //return <Redirect to="/doctordashboard" />
-        // console.log("hi///////////")
       })
       .catch((error) => {
         console.log(error)
       })
   }
   if (loggedIn) {
-    return <Redirect to={`/doctordashboard/${emailId}`} />
+    console.log(emailId)
+    return (
+      <Redirect
+        to={{
+          pathname: "/patientdashboard",
+          state: {
+            patientEmailId: emailId,
+          },
+        }}
+      />
+    )
   }
   return (
     <div>

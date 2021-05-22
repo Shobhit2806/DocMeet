@@ -5,9 +5,10 @@ import LoginForm from "./LoginForm"
 import loginimg from "../../assets/images/login1.gif"
 import Navbar from "../landing-page/navbar"
 import { Link, Redirect } from "react-router-dom"
+import CustomerLoginForm from "./CustomerLoginForm"
 import "./login.css"
 
-export default function Login() {
+export default function CustomerLogin() {
   return (
     <div>
       <Navbar />
@@ -20,10 +21,10 @@ export default function Login() {
           <div className="loginWrapper">
             <div className="sectionTitle">
               <h2 className="sectionText">Login Here</h2>
-              <Link to="/customerlogin">Are you a Patient? Login Here</Link>
+              <Link to="/login">Are you a Doctor? Login Here</Link>
             </div>
             <div data-aos="fade-up" data-aos-delay="100">
-              <LoginForm />
+              <CustomerLoginForm/> 
             </div>
           </div>
         </div>

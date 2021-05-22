@@ -1,12 +1,11 @@
 import React from "react"
-import SignUpForm from "./SignupForm"
 import image1 from "../../assets/images/img1.svg"
 import Navbar from "../landing-page/navbar"
 import "./signup.css"
 import { Link } from "react-router-dom"
-import CustomerSignup from "./CustomerSignUpForm"
+import CustomerSignupForm from "./CustomerSignUpForm"
 
-function Signup() {
+function CustomerSignup() {
   return (
     <div>
       <Navbar />
@@ -20,11 +19,10 @@ function Signup() {
             <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
               <div className="section-title">
                 <h2 className="textsignuphead">Sign Up Here</h2>
-                <Link to="/customersignup">Are you a Patient?</Link>
+                <Link to="/signup">Are you a Doctor?</Link>
               </div>
 
-              {/* <CustomerSignup/> */}
-              <SignUpForm />
+              <CustomerSignupForm />
             </div>
           </div>
         </div>
@@ -33,4 +31,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default CustomerSignup
