@@ -1,51 +1,49 @@
-import React from 'react';
-import './App.css';
-import Landing from './Components/landing-page/landing'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import Doctors from './Components/Doctors/Doctors';
-import Signup from './Components/Authentication/Signup';
-import PatientDetails from './Components/BookingDetails/PatientDetails';
-import Appointment from './Components/BookingDetails/Appointment';
-import PatientDashboard from './Components/PatientDashboard/PatientDashboard';
-import DoctorDashboard from './Components/DoctorDashboard/DoctorDashboard';
-import step2 from './Components/Authentication/step2';
-import Login from './Components/Authentication/Login'
-import patientLogin from './Components/Patientauth/patientLogin';
-import Logout from './Components/Authentication/Logout';
+import React from "react"
+import "./App.css"
+import Landing from "./Components/landing-page/landing"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Doctors from "./Components/Doctors/Doctors"
+import Signup from "./Components/Authentication/Signup"
+import PatientDetails from "./Components/BookingDetails/PatientDetails"
+import Appointment from "./Components/BookingDetails/Appointment"
+import PatientDashboard from "./Components/PatientDashboard/PatientDashboard"
+import DoctorDashboard from "./Components/DoctorDashboard/DoctorDashboard"
+import step2 from "./Components/Authentication/step2"
+import Login from "./Components/Authentication/Login"
+import patientLogin from "./Components/Patientauth/patientLogin"
+import Logout from "./Components/Authentication/Logout"
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import "bootstrap/dist/css/bootstrap.min.css"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import CustomerSignup from "./Components/Authentication/CustomerSignup"
+import CustomerLogin from "./Components/Authentication/CustomerLogin"
+import LandingLoggedin from "./Components/common/LandinLoggedin"
 
-
-AOS.init();
-
+AOS.init()
 
 function App() {
   return (
     <div className="App">
-
-<Router>
+      <Router>
         <Switch>
-        <Route path='/' exact component={Landing} />
-        {/* <Route path="/auth/google" component={patientLogin} /> */}
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
-        <Route path='/scheduleappointment' component={Appointment} />
-        <Route path='/patientdashboard' component={PatientDashboard} />
-        <Route path='/doctordashboard/:emailId' component={DoctorDashboard} />
-        <Route path='/step2' component={step2} />
-        <Route path='/logout' component={Logout} />
-        <Route path='/:speciality' component={Doctors} />
+          <Route path="/" exact component={Landing} />
+          {/* <Route path="/auth/google" component={patientLogin} /> */}
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/customersignup" component={CustomerSignup} />
+          <Route path="/landingloggedin" component={LandingLoggedin} />
+          <Route path="/scheduleappointment" component={Appointment} />
+          <Route path="/patientdashboard" render={(props) => <PatientDashboard {...props} />} />
+          <Route path="/doctordashboard/:emailId" component={DoctorDashboard} />
+          <Route path="/step2" component={step2} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/customerlogin" component={CustomerLogin} />
+          <Route path="/:speciality" component={Doctors} />
         </Switch>
-        </Router>
-      
+      </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

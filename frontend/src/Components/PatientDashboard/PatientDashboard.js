@@ -1,31 +1,31 @@
-import React from 'react'
-import NavbarLoggedIn from '../common/NavbarLoggedIn';
-import Appointments from './Appointments';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Zoom from '@material-ui/core/Zoom';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import UpIcon from '@material-ui/icons/KeyboardArrowUp';
-import { green } from '@material-ui/core/colors';
-import Box from '@material-ui/core/Box';
-import calendar from '../../assets/images/calendar.svg'
-import chat from '../../assets/images/chat.svg'
-import report from '../../assets/images/medical-history.svg'
-
-import './patdash.css'
-import AppointmentsDone from './AppointmentsDone';
+import React, { useEffect, useState } from "react"
+import NavbarLoggedIn from "../common/NavbarLoggedIn"
+import Appointments from "./Appointments"
+import PropTypes from "prop-types"
+import clsx from "clsx"
+import SwipeableViews from "react-swipeable-views"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import Tabs from "@material-ui/core/Tabs"
+import Tab from "@material-ui/core/Tab"
+import Typography from "@material-ui/core/Typography"
+import Zoom from "@material-ui/core/Zoom"
+import Fab from "@material-ui/core/Fab"
+import AddIcon from "@material-ui/icons/Add"
+import EditIcon from "@material-ui/icons/Edit"
+import UpIcon from "@material-ui/icons/KeyboardArrowUp"
+import { green } from "@material-ui/core/colors"
+import Box from "@material-ui/core/Box"
+import calendar from "../../assets/images/calendar.svg"
+import chat from "../../assets/images/chat.svg"
+import report from "../../assets/images/medical-history.svg"
+import { Link } from "react-router-dom"
+import "./patdash.css"
+import AppointmentsDone from "./AppointmentsDone"
+import axios from "axios"
 
 function TabPanel(props) {
-  
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <Typography
@@ -38,155 +38,191 @@ function TabPanel(props) {
     >
       {value === index && <Box p={3}>{children}</Box>}
     </Typography>
-  );
+  )
 }
 
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
-};
+}
 
 function a11yProps(index) {
   return {
     id: `action-tab-${index}`,
-    'aria-controls': `action-tabpanel-${index}`,
-  };
+    "aria-controls": `action-tabpanel-${index}`,
+  }
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: '#F3F7FA',
+    backgroundColor: "#F3F7FA",
     width: 500,
-    position:'absolute',
-    right:15,
+    position: "absolute",
+    right: 15,
     minHeight: 200,
   },
   fab: {
-    position: 'absolute',
+    position: "absolute",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
   fabGreen: {
     color: theme.palette.common.white,
     backgroundColor: green[500],
-    '&:hover': {
+    "&:hover": {
       backgroundColor: green[600],
     },
   },
-}));
+}))
 
+// const results = [
+//   {
+//     name: "Dr. R.C Bansal",
+//     time: "9:30",
+//     phone: "8497456121",
+//     past: 1,
+//   },
+//   {
+//     name: "Dr.Praveen Bansal",
+//     time: "10:30",
+//     phone: "8497456121",
+//     past: 0,
+//   },
+//   {
+//     name: "Dr. R.C Bansal",
+//     time: "9:30",
+//     phone: "8497456121",
+//     past: 1,
+//   },
+// ]
 
-const results =[
+const results2 = [
   {
-      "name":"Dr. R.C Bansal",
-      "time":"9:30",
-      "phone":"8497456121",
-      "past":1
+    name: "Dr. Bansal",
+    time: "9:30",
+    phone: "8497456121",
+    past: 1,
   },
   {
-      "name":"Dr.Praveen Bansal",
-      "time":"10:30",
-      "phone":"8497456121",
-      "past":0
+    name: "Dr.MB Bansal",
+    time: "10:30",
+    phone: "8497456121",
+    past: 0,
   },
   {
-      "name":"Dr. R.C Bansal",
-      "time":"9:30",
-      "phone":"8497456121",
-      "past":1
+    name: "Dr. Garg",
+    time: "9:30",
+    phone: "8497456121",
+    past: 1,
   },
-  
 ]
 
-const results2 =[
-  {
-      "name":"Dr. Bansal",
-      "time":"9:30",
-      "phone":"8497456121",
-      "past":1
-  },
-  {
-      "name":"Dr.MB Bansal",
-      "time":"10:30",
-      "phone":"8497456121",
-      "past":0
-  },
-  {
-      "name":"Dr. Garg",
-      "time":"9:30",
-      "phone":"8497456121",
-      "past":1
-  },
-  
-]
+export default function PatientDashboard(props) {
+  const classes = useStyles()
+  const theme = useTheme()
+  const [value, setValue] = React.useState(0)
+  console.log(props)
+  const [results, setResults] = useState([])
 
+  useEffect(() => {
+    async function fetchData() {
+      // console.log(props)
+      const emailId = props.location.state.patientEmailId
+      const token = localStorage.getItem("token")
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+      if (token) {
+        config.headers["x-auth-token"] = token
+      }
 
-export default function PatientDashboard() {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [value, setValue] = React.useState(0);
+      // You can await here
+      // const response = await axios.get(`/api/clinics/details/${emailId}`);
+      // setDoctor(response.data[0]);
+
+      const appointments = await axios.get(`/api/appointmenttimes/patient/${emailId}`, config)
+      console.log(appointments)
+      //console.log(typeof(appointments))
+      setResults(appointments.data)
+    }
+    fetchData()
+  }, [])
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   const handleChangeIndex = (index) => {
-    setValue(index);
-  };
+    setValue(index)
+  }
 
-
-    return (
-        <div>
-            <NavbarLoggedIn />
-          <div className="headline">  How are you,Steve?</div>
-          <div className="alerts">
-          <div className="calendar"><img src={calendar} width="40%"/></div>
-          <div className="createalerts">Create Alerts</div>
-          </div>
-
-          <div className="chat">
-          <div className="chatimg"><img src={chat} width="50%"/></div>
-          <div className="chat-text">Chat</div>
-          </div>
-          
-          <div className="medical">
-          <div className="medicalimg"><img src={report} width="50%"/></div>
-          <div className="medical-text">Medical Reports</div>
-          </div>
-          <div className={classes.root}>
-          <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="action tabs example"
-        >
-          <Tab label="Upcoming Appointments" {...a11yProps(0)} />
-          <Tab label="Past Appointments" {...a11yProps(1)} />
-          
-        </Tabs>
-      </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
+  return (
+    <div>
+      <NavbarLoggedIn />
+      <div className="headline"> How are you,Steve?</div>
+      <Link
+        to={{
+          pathname: "/landingloggedin",
+          state: {
+            patientEmailId: props.location.state.patientEmailId,
+          },
+        }}
       >
-        <TabPanel value={value} index={0} dir={theme.direction} >
- {results.map(result => (<Appointments result={result} />))} 
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction} >
-        {results2.map(result => (<AppointmentsDone result={result} />))} 
-          </TabPanel>
-      </SwipeableViews>
-      
-          
-           
-         
+        <div className="alerts">
+          <div className="calendar">
+            <img src={calendar} width="40%" />
+          </div>
+          <div className="createalerts">Book Appointments</div>
+        </div>
+      </Link>
+      <div className="chat">
+        <div className="chatimg">
+          <img src={chat} width="50%" />
+        </div>
+        <div className="chat-text">Chat</div>
       </div>
-            {/* <div className="appointments">
+
+      <div className="medical">
+        <div className="medicalimg">
+          <img src={report} width="50%" />
+        </div>
+        <div className="medical-text">Medical Reports</div>
+      </div>
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="action tabs example"
+          >
+            <Tab label="Upcoming Appointments" {...a11yProps(0)} />
+            <Tab label="Past Appointments" {...a11yProps(1)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            {results.map((result) => (
+              <Appointments result={result} />
+            ))}
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            {results2.map((result) => (
+              <AppointmentsDone result={result} />
+            ))}
+          </TabPanel>
+        </SwipeableViews>
+      </div>
+      {/* <div className="appointments">
             <h3 className="textup">Upcoming Appointment</h3>
         {results.map(result => (
               
@@ -194,6 +230,6 @@ export default function PatientDashboard() {
             
           ))}
             </div> */}
-      </div>
-    )
+    </div>
+  )
 }

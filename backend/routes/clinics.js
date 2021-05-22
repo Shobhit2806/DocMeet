@@ -15,7 +15,21 @@ router.get('/',async (req, res)=>{
 
 router.get('/details/:emailId',async (req, res)=>{
     const clinics = await Clinic.find({emailId:req.params.emailId});
+    console.log(clinics);
     res.send(clinics)
+})
+
+router.put('/details/:emailId',async (req, res)=>{
+    try{
+        console.log(req.body);
+        const clinics = await Clinic.findOne({emailId:req.params.emailId});
+        clinics.set({availability:req.body.availability})
+        clinics.save();
+        res.send(clinics)
+    }catch(err){
+        console.log(err);
+    }
+    
 })
 
 
@@ -57,7 +71,8 @@ router.post('/',async (req,res)=>{
         zipcode:req.body.zipcode,
         fees:req.body.fees,
         fromDay:req.body.fromDay,
-        toDay:req.body.toDay
+        toDay:req.body.toDay,
+        availability:req.body.availability
 
     });
 

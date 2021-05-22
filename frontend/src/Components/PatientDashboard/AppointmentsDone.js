@@ -84,12 +84,10 @@ export default function AppointmentsDone({result}) {
             <Timeline>
       <TimelineItem>
         <TimelineOppositeContent>
-          <Typography variant="body2" color="textSecondary">
-            {result.time}
-          </Typography>
+        
         </TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineDot color="primary">
+          <TimelineDot color="red">
           <HotelIcon />
           </TimelineDot>
           <TimelineConnector />
@@ -101,12 +99,7 @@ export default function AppointmentsDone({result}) {
             </Typography>
            
             <Typography>{result.phone}</Typography>
-            <Typography  component="h1">
-              Booking Number:
-            </Typography>
-            <Typography  component="h1">
-              Current Booking Number:
-            </Typography>
+          
             <Typography>
             <Box component="fieldset" mb={1} borderColor="transparent">
       
@@ -118,8 +111,7 @@ export default function AppointmentsDone({result}) {
       />
     </Box>
             </Typography>
-            <Link to="/scheduleappointment"><Button className="reschedule" variant="primary">Reschedule</Button></Link> 
-            <Button className="cancel" onClick={handleDelete} variant="primary">Cancel</Button>
+            
           </Paper>
           
         </TimelineContent>

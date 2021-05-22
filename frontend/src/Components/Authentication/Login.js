@@ -1,51 +1,33 @@
-import React from 'react'
-import {Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import axios from 'axios'
-import {Link, Redirect } from 'react-router-dom'
-import LoginForm from './LoginForm';
-import loginimg from '../../assets/images/login1.gif'
+import React from "react"
+import { Button, Form, FormGroup, Label, Input } from "reactstrap"
+import axios from "axios"
+import LoginForm from "./LoginForm"
+import loginimg from "../../assets/images/login1.gif"
+import Navbar from "../landing-page/navbar"
+import { Link, Redirect } from "react-router-dom"
+import "./login.css"
 
 export default function Login() {
-  
-        
-    return (
-        <div>
-            <section id="about" className="about">
-            <div className="container">
-          
-              <div className="row no-gutters">
-                <div className="col-lg-6 video-box">
-          
-                
-                  
-                <img src={loginimg}  className="img-fluid" alt="login image" />
-                  
-                  
-                </div>
-          
-                <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
-          
-                  <div className="section-title">
-                    <h2 className="sectiontext">Login Here</h2>
-                    <p></p>
-                  </div>
-                  <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
-                    
-                  <LoginForm/>
-                  </div>
-          
-            
-          
-                  
-          
-          
-                
-          
-            </div>
-            </div>
-            </div>
-          </section>
+  return (
+    <div>
+      <Navbar />
+      <div className="container">
+        <div className="row no-gutters">
+          <div className="col-lg-6 video-box">
+            <img src={loginimg} className="img-fluid" alt="login image" />
+          </div>
 
+          <div className="loginWrapper">
+            <div className="sectionTitle">
+              <h2 className="sectionText">Login Here</h2>
+              <Link to="/customerlogin">Are you a Patient? Login Here</Link>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="100">
+              <LoginForm />
+            </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }

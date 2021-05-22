@@ -1,26 +1,26 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import axios from 'axios';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
+import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Stepper from "@material-ui/core/Stepper"
+import Step from "@material-ui/core/Step"
+import StepLabel from "@material-ui/core/StepLabel"
+import StepContent from "@material-ui/core/StepContent"
+import Button from "@material-ui/core/Button"
+import Paper from "@material-ui/core/Paper"
+import Typography from "@material-ui/core/Typography"
+import axios from "axios"
+import Grid from "@material-ui/core/Grid"
+import DateFnsUtils from "@date-io/date-fns"
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
-} from '@material-ui/pickers';
+} from "@material-ui/pickers"
 
-import PatientDetails from '../BookingDetails/PatientDetails'
+import PatientDetails from "../BookingDetails/PatientDetails"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: "100%",
   },
   button: {
     marginTop: theme.spacing(1),
@@ -32,75 +32,97 @@ const useStyles = makeStyles((theme) => ({
   resetContainer: {
     padding: theme.spacing(3),
   },
-}));
+}))
 
 function getSteps() {
-  return ['Choose an available day for your appointment', 'Choose an available time for your appointment', 'Share your contact information with us and we will send you a reminder'];
+  return [
+    "Choose an available day for your appointment",
+    "Choose an available time for your appointment",
+    "Share your contact information with us and we will send you a reminder",
+  ]
 }
 
-
-
 export default function Appointment(props) {
-  console.log(props);
-  const [patientName, setpatientName] = React.useState(null);
-  const [contactnumber, setcontactnumber] = React.useState(null);
-  const [date, setdate] = React.useState(null);
-  const [time, settime] = React.useState(null);
+  console.log(props)
+  const [patientName, setpatientName] = React.useState(null)
+  const [contactnumber, setcontactnumber] = React.useState(null)
+  const [date, setdate] = React.useState(null)
+  const [time, settime] = React.useState(null)
 
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <input onChange={e => setdate(e.target.value)} type="date"/>;
+        return <input onChange={(e) => setdate(e.target.value)} type="date" />
       case 1:
-        return <input onChange={e => settime(e.target.value)} type="time"/>;
+        return <input onChange={(e) => settime(e.target.value)} type="time" />
       case 2:
-        return  <div>
-        <div>Name:<input onChange={e => setpatientName(e.target.value)} type="text" name="patientName" id="examplepatientName" placeholder="Patient Name"/></div> 
-        
-        <div>PhoneNumber:<input type="text" onChange={e => setcontactnumber(e.target.value)} name="contactnumber" id="examplecontactnumber" placeholder="phone number"/></div>
-        
-        </div>;
+        return (
+          <div>
+            <div>
+              Name:
+              <input
+                onChange={(e) => setpatientName(e.target.value)}
+                type="text"
+                name="patientName"
+                id="examplepatientName"
+                placeholder="Patient Name"
+              />
+            </div>
+
+            <div>
+              PhoneNumber:
+              <input
+                type="text"
+                onChange={(e) => setcontactnumber(e.target.value)}
+                name="contactnumber"
+                id="examplecontactnumber"
+                placeholder="phone number"
+              />
+            </div>
+          </div>
+        )
       default:
-        return 'Unknown step';
+        return "Unknown step"
     }
   }
 
-  const handleSubmit = e =>{
+  const handleSubmit = (e) => {
     console.log(patientName)
     window.alert("Booking Confirmed")
-    e.preventDefault();
+    e.preventDefault()
     axios({
-        method: 'post',
-        url: 'api/appointmenttimes',
-        headers: {
-            'Content-Type': 'application/json'
-            }, 
-        data: {
-          DoctorEmailId:props.location.state.emailId,
-          patientName:patientName,
-          contactnumber:contactnumber,
-          date:date,
-          time:time
-        }
-      });
-}
+      method: "post",
+      url: "api/appointmenttimes",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        DoctorEmailId: props.location.state.emailId,
+        patientName: patientName,
+        PatientEmailId: props.location.state.patientEmailId,
+        contactnumber: contactnumber,
+        date: date,
+        time: time,
+        doctor: props.location.state.doctor,
+      },
+    })
+  }
 
-
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
+  const classes = useStyles()
+  const [activeStep, setActiveStep] = React.useState(0)
+  const steps = getSteps()
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  }
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep - 1)
+  }
 
   const handleReset = () => {
-    setActiveStep(0);
-  };
+    setActiveStep(0)
+  }
 
   return (
     <div className={classes.root}>
@@ -109,8 +131,8 @@ export default function Appointment(props) {
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             <StepContent>
-            <Typography>{getStepContent(index)}</Typography>
-              
+              <Typography>{getStepContent(index)}</Typography>
+
               {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
       
@@ -128,7 +150,7 @@ export default function Appointment(props) {
         
       </Grid>
       </MuiPickersUtilsProvider> */}
-      
+
               <div className={classes.actionsContainer}>
                 <div>
                   <Button
@@ -144,7 +166,7 @@ export default function Appointment(props) {
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
                   </Button>
                 </div>
               </div>
@@ -153,15 +175,13 @@ export default function Appointment(props) {
         ))}
       </Stepper>
       {activeStep === steps.length && (
-        
-        <Paper onClick = {handleSubmit} square elevation={0} className={classes.resetContainer}>
+        <Paper onClick={handleSubmit} square elevation={0} className={classes.resetContainer}>
           <Typography>All steps completed - you&apos;re finished,Confirm booking</Typography>
-            <Button onClick={handleReset} className={classes.button}>
-              Confirm
-            </Button> 
-            
+          <Button onClick={handleReset} className={classes.button}>
+            Confirm
+          </Button>
         </Paper>
       )}
     </div>
-  );
+  )
 }
