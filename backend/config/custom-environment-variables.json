@@ -1,4 +1,4 @@
 {
-    "jwtPrivateKey":"docbook_jwtPrivateKey"
+  "jwtPrivateKey": "docbook_jwtPrivateKey",
+  "db": "docbook_db"
 }
-
