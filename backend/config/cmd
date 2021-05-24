@@ -1,2 +1,2 @@
 export docbook_jwtPrivateKey=mySecureKey
-export docbook_db=mongodb+srv://shobhit:test%40123@docmeetdb.tkr6v.mongodb.net/DocMeetDatabase?retryWrites=true&w=majority
+export docbook_db=mongodb+srv://shobhit:test123@docmeetdb.tkr6v.mongodb.net/DocMeetDatabase?retryWrites=true&w=majority

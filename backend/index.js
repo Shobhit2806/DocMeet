@@ -25,7 +25,10 @@ if (!config.get("jwtPrivateKey")) {
 }
 
 mongoose
-  .connect(process.env.docbook_db || "mongodb://localhost/docbook")
+  .connect(process.env.docbook_db || "mongodb://localhost/docbook", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to MongoDB...");
   })
