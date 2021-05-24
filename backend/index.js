@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const helmet = require("helmet");
+const compression = require("compression");
+
 const app = express();
+app.use(helmet());
+app.use(compression());
+
 const clinics = require("./routes/clinics");
 const patients = require("./routes/patients");
 const appointmenttimes = require("./routes/appointmenttimes");
